@@ -2,875 +2,2264 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Md. Arafat Alam — Curriculum Vitae</title>
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
 <style>
-  :root{
-    --bg:#0B0D0B;
-    --bg-elevated:#111309;
-    --surface:#15170F;
-    --border:#282B22;
-    --border-soft:#1D2018;
-    --text:#EAE7DC;
-    --text-muted:#9A9C8E;
-    --text-faint:#63655A;
-    --accent:#B7913A;
-    --accent-soft:rgba(183,145,58,0.14);
-    --font-display:'Newsreader', Georgia, 'Times New Roman', serif;
-    --font-body:'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-    box-sizing:border-box;
-    padding-top:env(safe-area-inset-top,0px);
-    padding-bottom:env(safe-area-inset-bottom,0px);
-  }
-  :root[data-theme="dark"]{
-    --bg:#0B0D0B; --bg-elevated:#111309; --surface:#15170F; --border:#282B22; --border-soft:#1D2018;
-    --text:#EAE7DC; --text-muted:#9A9C8E; --text-faint:#63655A; --accent:#B7913A; --accent-soft:rgba(183,145,58,0.14);
-  }
-  @media (prefers-color-scheme: dark){
-    :root:not([data-theme="light"]){
-      --bg:#0B0D0B; --bg-elevated:#111309; --surface:#15170F; --border:#282B22; --border-soft:#1D2018;
-      --text:#EAE7DC; --text-muted:#9A9C8E; --text-faint:#63655A; --accent:#B7913A; --accent-soft:rgba(183,145,58,0.14);
+
+/* =========================================================
+   COLOR SYSTEM
+========================================================= */
+
+:root {
+    --bg: #07111f;
+    --bg-2: #0b1d32;
+    --surface: #0e2138;
+    --surface-2: #102943;
+
+    --blue: #5ea8ff;
+    --blue-light: #8bc2ff;
+
+    --green: #54c58a;
+    --red: #ff6f6f;
+
+    --white: #f4f1e8;
+    --text: #f4f1e8;
+    --muted: #aab9c7;
+    --faint: #718397;
+
+    --border: rgba(151,180,207,.20);
+    --border-soft: rgba(151,180,207,.10);
+
+    --font-display: "Newsreader", Georgia, serif;
+    --font-body: "Inter", Arial, sans-serif;
+}
+
+
+/* =========================================================
+   RESET
+========================================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--font-body);
+    line-height: 1.6;
+    font-size: 16px;
+    overflow-x: hidden;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+
+/* =========================================================
+   ANIMATED BACKGROUND
+========================================================= */
+
+body::before,
+body::after {
+    content: "";
+    position: fixed;
+    width: 600px;
+    height: 600px;
+    border-radius: 50%;
+    filter: blur(120px);
+    opacity: .20;
+    pointer-events: none;
+    z-index: -2;
+}
+
+body::before {
+    background: var(--blue);
+    top: -300px;
+    left: -250px;
+    animation: backgroundMove1 18s ease-in-out infinite alternate;
+}
+
+body::after {
+    background: var(--green);
+    bottom: -300px;
+    right: -250px;
+    animation: backgroundMove2 22s ease-in-out infinite alternate;
+}
+
+@keyframes backgroundMove1 {
+    from {
+        transform: translate(0,0);
     }
-  }
-  *{margin:0; padding:0; box-sizing:border-box;}
-  html{ scroll-behavior:smooth; scroll-padding-top:calc(24px + env(safe-area-inset-top,0px)); }
-  body{
-    background:var(--bg);
-    color:var(--text);
-    font-family:var(--font-body);
-    font-size:16px;
-    line-height:1.6;
-    -webkit-font-smoothing:antialiased;
-    position:relative;
-  }
-  a{ color:inherit; text-decoration:none; }
-
-  /* ---------- Ambient background: continuous, tone-on-tone ---------- */
-  .ambient-bg{
-    position:fixed;
-    inset:0;
-    z-index:-1;
-    overflow:hidden;
-    background:var(--bg);
-    pointer-events:none;
-  }
-  .ambient-bg::before,
-  .ambient-bg::after{
-    content:"";
-    position:absolute;
-    width:120vmax;
-    height:120vmax;
-    border-radius:50%;
-    filter:blur(120px);
-    opacity:0.55;
-    will-change:transform;
-  }
-  .ambient-bg::before{
-    top:-55vmax;
-    left:-35vmax;
-    background:radial-gradient(circle at center, var(--bg-elevated), transparent 62%);
-    animation:driftA 48s ease-in-out infinite alternate;
-  }
-  .ambient-bg::after{
-    bottom:-60vmax;
-    right:-40vmax;
-    background:radial-gradient(circle at center, var(--accent-soft), transparent 60%);
-    animation:driftB 60s ease-in-out infinite alternate;
-  }
-  @keyframes driftA{
-    0%  { transform:translate(0,0) scale(1); }
-    50% { transform:translate(6vmax,4vmax) scale(1.08); }
-    100%{ transform:translate(-4vmax,8vmax) scale(1); }
-  }
-  @keyframes driftB{
-    0%  { transform:translate(0,0) scale(1); }
-    50% { transform:translate(-6vmax,-5vmax) scale(1.1); }
-    100%{ transform:translate(4vmax,-8vmax) scale(1); }
-  }
-  @media (prefers-reduced-motion: reduce){
-    .ambient-bg::before, .ambient-bg::after{ animation:none; }
-  }
-
-  /* ---------- Layout shell ---------- */
-  .shell{
-    display:grid;
-    grid-template-columns:280px 1fr;
-    min-height:100%;
-  }
-  @media (max-width:900px){
-    .shell{ grid-template-columns:1fr; }
-  }
-
-  /* ---------- Sidebar ---------- */
-  .sidebar{
-    position:sticky;
-    top:0;
-    align-self:start;
-    height:100vh;
-    height:100dvh;
-    padding:44px 34px;
-    padding-top:calc(44px + env(safe-area-inset-top,0px));
-    border-right:1px solid var(--border-soft);
-    display:flex;
-    flex-direction:column;
-    justify-content:space-between;
-    overflow-y:auto;
-  }
-  @media (max-width:900px){
-    .sidebar{
-      position:relative;
-      height:auto;
-      padding:26px 24px;
-      padding-top:calc(26px + env(safe-area-inset-top,0px));
-      border-right:none;
-      border-bottom:1px solid var(--border-soft);
+    to {
+        transform: translate(150px,100px);
     }
-  }
-  .brand{
-    display:flex;
-    align-items:center;
-    gap:14px;
-  }
-  .monogram{
-    width:46px; height:46px;
-    border:1px solid var(--accent);
-    color:var(--accent);
-    display:flex; align-items:center; justify-content:center;
-    font-family:var(--font-display);
-    font-size:17px;
-    letter-spacing:0.02em;
-    flex:none;
-  }
-  .brand-name{
-    font-family:var(--font-display);
-    font-size:18px;
-    line-height:1.25;
-  }
-  .brand-role{
-    font-size:12px;
-    color:var(--text-muted);
-    margin-top:2px;
-  }
+}
 
-  .menu-toggle{
-    display:none;
-    background:none;
-    border:1px solid var(--border);
-    color:var(--text);
-    width:38px; height:38px;
-    align-items:center; justify-content:center;
-    flex:none;
-    font-size:16px;
-  }
-  @media (max-width:900px){
-    .sidebar-top{ display:flex; align-items:center; justify-content:space-between; }
-    .menu-toggle{ display:flex; }
-  }
-
-  nav.sidenav{
-    margin-top:40px;
-    display:flex;
-    flex-direction:column;
-    gap:2px;
-  }
-  @media (max-width:900px){
-    nav.sidenav{
-      max-height:0;
-      overflow:hidden;
-      margin-top:0;
-      transition:max-height .25s ease;
+@keyframes backgroundMove2 {
+    from {
+        transform: translate(0,0);
     }
-    .sidebar.open nav.sidenav{ max-height:600px; margin-top:22px; }
-    .sidebar.open .sidebar-contact{ margin-top:22px; }
-  }
-  nav.sidenav a{
-    font-size:13px;
-    color:var(--text-muted);
-    padding:8px 0;
-    border-bottom:1px solid transparent;
-  }
-  nav.sidenav a:hover{ color:var(--text); }
+    to {
+        transform: translate(-130px,-100px);
+    }
+}
 
-  .sidebar-contact{
-    font-size:12.5px;
-    color:var(--text-muted);
-    display:flex;
-    flex-direction:column;
-    gap:7px;
-    padding-top:24px;
-    border-top:1px solid var(--border-soft);
-    margin-top:28px;
-  }
-  .sidebar-contact a:hover{ color:var(--accent); }
-  .sidebar-note{
-    font-size:11px;
-    color:var(--text-faint);
-    margin-top:18px;
-    line-height:1.5;
-  }
 
-  /* ---------- Main ---------- */
-  main{ padding:64px 56px 120px; max-width:840px; }
-  @media (max-width:900px){ main{ padding:40px 24px 80px; } }
+/* =========================================================
+   PAGE INTRO ANIMATION
+========================================================= */
 
-  .hero-eyebrow{
-    font-size:12.5px;
-    color:var(--accent);
-    margin-bottom:18px;
-  }
-  h1.hero-name{
-    font-family:var(--font-display);
-    font-weight:500;
-    font-size:clamp(34px, 5vw, 50px);
-    line-height:1.1;
-    letter-spacing:-0.01em;
-  }
-  .hero-tagline{
-    font-family:var(--font-display);
-    font-style:italic;
-    font-size:19px;
-    color:var(--text-muted);
-    margin-top:14px;
-    max-width:32em;
-  }
-  .hero-meta{
-    display:flex;
-    flex-wrap:wrap;
-    gap:8px 22px;
-    margin-top:26px;
-    font-size:13px;
-    color:var(--text-muted);
-  }
-  .hero-meta span{ white-space:nowrap; }
+.page-loader {
+    position: fixed;
+    inset: 0;
+    background: var(--bg);
+    z-index: 9999;
+    animation: pageLoaderOut 1s ease forwards;
+    pointer-events: none;
+}
 
-  .profile-block{
-    margin-top:54px;
-    padding-top:40px;
-    border-top:1px solid var(--border-soft);
-    max-width:64ch;
-    font-size:16px;
-    color:var(--text-muted);
-  }
-  .profile-block p + p{ margin-top:14px; }
+@keyframes pageLoaderOut {
+    0% {
+        opacity: 1;
+    }
 
-  section.dossier{
-    margin-top:62px;
-    scroll-margin-top:24px;
-  }
-  .section-head{
-    display:flex;
-    align-items:baseline;
-    justify-content:space-between;
-    gap:20px;
-    border-bottom:1px solid var(--border);
-    padding-bottom:14px;
-    margin-bottom:26px;
-  }
-  .section-head h2{
-    font-family:var(--font-display);
-    font-weight:500;
-    font-size:24px;
-  }
-  .section-head .count{
-    font-size:12px;
-    color:var(--text-faint);
-    white-space:nowrap;
-  }
+    70% {
+        opacity: 1;
+    }
 
-  .entry{
-    display:grid;
-    grid-template-columns:130px 1fr;
-    gap:24px;
-    padding:18px 0;
-    border-bottom:1px solid var(--border-soft);
-  }
-  .entry:last-child{ border-bottom:none; }
-  @media (max-width:640px){
-    .entry{ grid-template-columns:1fr; gap:4px; }
-  }
-  .entry-year{
-    font-family:var(--font-display);
-    font-size:14px;
-    color:var(--accent);
-    padding-top:2px;
-  }
-  .entry-title{
-    font-size:15.5px;
-    font-weight:500;
-    color:var(--text);
-  }
-  .entry-org{
-    font-size:13.5px;
-    color:var(--text-muted);
-    margin-top:2px;
-  }
-  .entry-desc{
-    font-size:13.5px;
-    color:var(--text-muted);
-    margin-top:8px;
-    line-height:1.6;
-    max-width:56ch;
-  }
-  .entry-tag{
-    display:inline-block;
-    font-size:10.5px;
-    color:var(--accent);
-    border:1px solid var(--accent-soft);
-    background:var(--accent-soft);
-    padding:2px 8px;
-    margin-top:8px;
-  }
+    100% {
+        opacity: 0;
+        visibility: hidden;
+    }
+}
 
-  table.simple{
-    width:100%;
-    border-collapse:collapse;
-    font-size:14px;
-  }
-  table.simple th{
-    text-align:left;
-    font-weight:500;
-    color:var(--text-faint);
-    font-size:11.5px;
-    padding-bottom:10px;
-    border-bottom:1px solid var(--border);
-  }
-  table.simple td{
-    padding:12px 14px 12px 0;
-    border-bottom:1px solid var(--border-soft);
-    color:var(--text-muted);
-    vertical-align:top;
-  }
-  table.simple td.lead{ color:var(--text); font-weight:500; }
-  table.simple tr:last-child td{ border-bottom:none; }
+.animate {
+    opacity: 0;
+    transform: translateY(25px);
+    animation: reveal .8s cubic-bezier(.22,1,.36,1) forwards;
+}
 
-  .note-pending{
-    font-size:12px;
-    color:var(--text-faint);
-    font-style:italic;
-  }
+.delay-1 { animation-delay: .15s; }
+.delay-2 { animation-delay: .25s; }
+.delay-3 { animation-delay: .35s; }
+.delay-4 { animation-delay: .45s; }
+.delay-5 { animation-delay: .55s; }
 
-  footer.page-footer{
-    margin-top:80px;
-    padding-top:28px;
-    border-top:1px solid var(--border-soft);
-    font-size:12px;
-    color:var(--text-faint);
-    display:flex;
-    justify-content:space-between;
-    flex-wrap:wrap;
-    gap:10px;
-  }
+@keyframes reveal {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
 
-  ::selection{ background:var(--accent-soft); color:var(--text); }
-  a:focus-visible, button:focus-visible{ outline:1px solid var(--accent); outline-offset:2px; }
+
+/* =========================================================
+   MAIN LAYOUT
+========================================================= */
+
+.wrapper {
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    min-height: 100vh;
+}
+
+
+/* =========================================================
+   SIDEBAR
+========================================================= */
+
+.sidebar {
+    position: sticky;
+    top: 0;
+    height: 100vh;
+
+    padding: 40px 30px;
+
+    border-right: 1px solid var(--border-soft);
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    background: rgba(7,17,31,.72);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+
+    z-index: 50;
+}
+
+.sidebar-top {
+    width: 100%;
+}
+
+
+/* Brand */
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 13px;
+}
+
+.monogram {
+    width: 48px;
+    height: 48px;
+
+    border: 1px solid var(--blue);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    color: var(--blue);
+
+    font-family: var(--font-display);
+    font-size: 18px;
+
+    transition: .3s ease;
+}
+
+.monogram:hover {
+    background: var(--blue);
+    color: var(--bg);
+    transform: rotate(-5deg) scale(1.05);
+}
+
+.brand-name {
+    font-family: var(--font-display);
+    font-size: 18px;
+}
+
+.brand-role {
+    color: var(--muted);
+    font-size: 11px;
+}
+
+
+/* Navigation */
+
+nav {
+    margin-top: 45px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+nav a {
+    color: var(--muted);
+    font-size: 13px;
+
+    padding: 9px 12px;
+
+    border-left: 2px solid transparent;
+
+    transition:
+        color .25s ease,
+        background .25s ease,
+        border .25s ease,
+        transform .25s ease;
+}
+
+nav a:hover {
+    color: var(--white);
+    background: rgba(94,168,255,.08);
+    border-left-color: var(--blue);
+    transform: translateX(4px);
+}
+
+
+/* Sidebar contact */
+
+.sidebar-contact {
+    border-top: 1px solid var(--border-soft);
+
+    padding-top: 20px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+
+    color: var(--muted);
+    font-size: 12px;
+}
+
+.sidebar-contact a {
+    transition: color .2s ease;
+}
+
+.sidebar-contact a:hover {
+    color: var(--blue);
+}
+
+.sidebar-note {
+    margin-top: 15px;
+    color: var(--faint);
+    font-size: 10px;
+}
+
+
+/* Mobile menu */
+
+.menu-toggle {
+    display: none;
+
+    width: 40px;
+    height: 40px;
+
+    border: 1px solid var(--border);
+    background: transparent;
+    color: var(--white);
+
+    cursor: pointer;
+
+    transition: .25s ease;
+}
+
+.menu-toggle:hover {
+    border-color: var(--blue);
+    color: var(--blue);
+}
+
+.menu-toggle:active {
+    transform: scale(.88);
+}
+
+
+/* =========================================================
+   MAIN CONTENT
+========================================================= */
+
+main {
+    width: 100%;
+    max-width: 900px;
+
+    padding: 70px 60px 120px;
+}
+
+
+/* =========================================================
+   HERO
+========================================================= */
+
+.hero {
+    position: relative;
+}
+
+.hero-eyebrow {
+    color: var(--blue);
+    font-size: 12px;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+}
+
+.hero-name {
+    font-family: var(--font-display);
+    font-size: clamp(42px, 6vw, 68px);
+    line-height: 1.02;
+    font-weight: 500;
+    letter-spacing: -.02em;
+}
+
+.hero-tagline {
+    margin-top: 18px;
+
+    max-width: 650px;
+
+    color: var(--muted);
+
+    font-family: var(--font-display);
+    font-size: 20px;
+    font-style: italic;
+}
+
+.hero-meta {
+    margin-top: 28px;
+
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px 24px;
+
+    color: var(--muted);
+    font-size: 13px;
+}
+
+.hero-meta span::before {
+    content: "•";
+    color: var(--green);
+    margin-right: 8px;
+}
+
+
+/* =========================================================
+   PROFILE PHOTO
+========================================================= */
+
+.profile-area {
+    margin-top: 50px;
+
+    display: flex;
+    align-items: center;
+    gap: 28px;
+
+    padding: 25px;
+
+    border: 1px solid var(--border);
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(94,168,255,.07),
+            rgba(84,197,138,.04)
+        );
+
+    transition:
+        transform .3s ease,
+        border-color .3s ease;
+}
+
+.profile-area:hover {
+    transform: translateY(-4px);
+    border-color: rgba(94,168,255,.45);
+}
+
+.profile-photo {
+    width: 120px;
+    height: 120px;
+
+    border-radius: 50%;
+
+    object-fit: cover;
+
+    border: 2px solid var(--blue);
+
+    box-shadow:
+        0 0 0 6px rgba(94,168,255,.06),
+        0 15px 40px rgba(0,0,0,.3);
+}
+
+.profile-photo-placeholder {
+    width: 120px;
+    height: 120px;
+
+    border-radius: 50%;
+
+    border: 2px dashed var(--blue);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    color: var(--blue);
+
+    text-align: center;
+    font-size: 11px;
+}
+
+.profile-text {
+    color: var(--muted);
+    font-size: 14px;
+}
+
+
+/* =========================================================
+   SECTIONS
+========================================================= */
+
+section {
+    margin-top: 70px;
+    scroll-margin-top: 30px;
+}
+
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+
+    padding-bottom: 14px;
+
+    border-bottom: 1px solid var(--border);
+
+    margin-bottom: 20px;
+}
+
+.section-header h2 {
+    font-family: var(--font-display);
+    font-size: 27px;
+    font-weight: 500;
+}
+
+.section-count {
+    color: var(--faint);
+    font-size: 11px;
+}
+
+
+/* =========================================================
+   ENTRIES
+========================================================= */
+
+.entry {
+    display: grid;
+    grid-template-columns: 125px 1fr;
+    gap: 25px;
+
+    padding: 20px 0;
+
+    border-bottom: 1px solid var(--border-soft);
+
+    transition:
+        transform .25s ease,
+        padding-left .25s ease;
+}
+
+.entry:hover {
+    transform: translateX(5px);
+    padding-left: 5px;
+}
+
+.entry:last-child {
+    border-bottom: none;
+}
+
+.entry-year {
+    color: var(--blue);
+    font-family: var(--font-display);
+    font-size: 14px;
+}
+
+.entry-year::before {
+    content: "";
+    display: inline-block;
+
+    width: 6px;
+    height: 6px;
+
+    border-radius: 50%;
+
+    background: var(--green);
+
+    margin-right: 8px;
+}
+
+.entry-title {
+    color: var(--white);
+    font-size: 15px;
+    font-weight: 600;
+}
+
+.entry-org {
+    color: var(--muted);
+    font-size: 13px;
+    margin-top: 3px;
+}
+
+.entry-desc {
+    color: var(--muted);
+    font-size: 13px;
+    margin-top: 8px;
+    max-width: 650px;
+}
+
+.entry-tag {
+    display: inline-block;
+
+    margin-top: 9px;
+
+    padding: 3px 8px;
+
+    border: 1px solid rgba(84,197,138,.3);
+
+    background: rgba(84,197,138,.08);
+
+    color: var(--green);
+
+    font-size: 10px;
+}
+
+
+/* =========================================================
+   TABLES
+========================================================= */
+
+.simple {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.simple th {
+    color: var(--faint);
+    text-align: left;
+    font-size: 11px;
+    font-weight: 500;
+
+    padding-bottom: 10px;
+
+    border-bottom: 1px solid var(--border);
+}
+
+.simple td {
+    padding: 12px 10px 12px 0;
+
+    border-bottom: 1px solid var(--border-soft);
+
+    color: var(--muted);
+
+    font-size: 13px;
+}
+
+.simple td.lead {
+    color: var(--white);
+    font-weight: 500;
+    width: 180px;
+}
+
+.simple a {
+    color: var(--blue);
+
+    transition: color .2s ease;
+}
+
+.simple a:hover {
+    color: var(--green);
+}
+
+
+/* =========================================================
+   BUTTONS
+========================================================= */
+
+.button-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+
+    margin-top: 30px;
+}
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    min-height: 42px;
+
+    padding: 0 18px;
+
+    border: 1px solid var(--blue);
+
+    background: rgba(94,168,255,.08);
+
+    color: var(--blue);
+
+    font-size: 12px;
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition:
+        transform .18s ease,
+        background .25s ease,
+        color .25s ease,
+        box-shadow .25s ease;
+}
+
+.btn:hover {
+    background: var(--blue);
+    color: var(--bg);
+
+    box-shadow:
+        0 8px 25px rgba(94,168,255,.20);
+
+    transform: translateY(-3px);
+}
+
+.btn:active {
+    transform: scale(.92);
+}
+
+.btn.green {
+    border-color: var(--green);
+    color: var(--green);
+    background: rgba(84,197,138,.07);
+}
+
+.btn.green:hover {
+    background: var(--green);
+    color: var(--bg);
+}
+
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+.page-footer {
+    margin-top: 100px;
+
+    padding-top: 25px;
+
+    border-top: 1px solid var(--border);
+
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+
+    color: var(--faint);
+    font-size: 11px;
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 900px) {
+
+    .wrapper {
+        display: block;
+    }
+
+    .sidebar {
+        position: relative;
+
+        height: auto;
+
+        padding: 22px 22px;
+
+        border-right: none;
+        border-bottom: 1px solid var(--border-soft);
+    }
+
+    .sidebar-top {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .menu-toggle {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    nav {
+        max-height: 0;
+        overflow: hidden;
+
+        margin-top: 0;
+
+        transition:
+            max-height .35s ease,
+            margin-top .35s ease;
+    }
+
+    .sidebar.open nav {
+        max-height: 600px;
+        margin-top: 25px;
+    }
+
+    .sidebar-contact {
+        margin-top: 0;
+        max-height: 0;
+        overflow: hidden;
+        border-top: none;
+        padding-top: 0;
+
+        transition:
+            max-height .35s ease,
+            margin-top .35s ease,
+            padding-top .35s ease;
+    }
+
+    .sidebar.open .sidebar-contact {
+        max-height: 300px;
+        margin-top: 20px;
+        padding-top: 20px;
+        border-top: 1px solid var(--border-soft);
+    }
+
+    main {
+        padding: 45px 22px 80px;
+    }
+
+    .profile-area {
+        align-items: flex-start;
+    }
+}
+
+
+@media (max-width: 600px) {
+
+    .hero-name {
+        font-size: 42px;
+    }
+
+    .hero-tagline {
+        font-size: 18px;
+    }
+
+    .profile-area {
+        flex-direction: column;
+        text-align: center;
+        align-items: center;
+    }
+
+    .entry {
+        grid-template-columns: 1fr;
+        gap: 5px;
+    }
+
+    .entry:hover {
+        transform: none;
+        padding-left: 0;
+    }
+
+    .simple {
+        display: block;
+        overflow-x: auto;
+    }
+
+    .simple td.lead {
+        min-width: 130px;
+    }
+
+    .page-footer {
+        flex-direction: column;
+    }
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+        scroll-behavior: auto !important;
+        transition-duration: .01ms !important;
+    }
+}
+
 </style>
 </head>
+
+
 <body>
 
-<div class="ambient-bg" aria-hidden="true"></div>
+<!-- Page loading animation -->
+<div class="page-loader"></div>
 
-<div class="shell">
-  <!-- ===================== SIDEBAR ===================== -->
-  <aside class="sidebar" id="sidebar">
-    <div>
-      <div class="sidebar-top">
+
+<div class="wrapper">
+
+
+<!-- ======================================================
+     SIDEBAR
+====================================================== -->
+
+<aside class="sidebar" id="sidebar">
+
+    <div class="sidebar-top">
+
         <div class="brand">
-          <div class="monogram">AA</div>
-          <div>
-            <div class="brand-name">Arafat Alam</div>
-            <div class="brand-role">Curriculum Vitae</div>
-          </div>
-        </div>
-        <button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation">☰</button>
-      </div>
 
-      <nav class="sidenav" id="sidenav">
+            <div class="monogram">
+                AA
+            </div>
+
+            <div>
+                <div class="brand-name">
+                    Md. Arafat Alam
+                </div>
+
+                <div class="brand-role">
+                    Curriculum Vitae
+                </div>
+            </div>
+
+        </div>
+
+
+        <button
+            class="menu-toggle"
+            id="menuToggle"
+            aria-label="Open menu"
+            type="button"
+        >
+            ☰
+        </button>
+
+    </div>
+
+
+    <nav class="sidenav">
+
         <a href="#profile">Profile</a>
+
         <a href="#education">Education</a>
-        <a href="#experience">Professional Experience</a>
-        <a href="#leadership">Leadership &amp; Event Organization</a>
-        <a href="#affiliations">Affiliations &amp; Memberships</a>
-        <a href="#conferences">Conferences, Workshops &amp; Programs</a>
-        <a href="#publications">Publications &amp; Book Chapters</a>
-        <a href="#media">Media &amp; Opinion Writing</a>
-        <a href="#presentations">Seminar Presentations</a>
-        <a href="#certificates">Certificates &amp; Honors</a>
+
+        <a href="#experience">Experience</a>
+
+        <a href="#leadership">Leadership</a>
+
+        <a href="#affiliations">Affiliations</a>
+
+        <a href="#conferences">Conferences</a>
+
+        <a href="#publications">Publications</a>
+
+        <a href="#media">Media</a>
+
+        <a href="#presentations">Presentations</a>
+
+        <a href="#certificates">Certificates</a>
+
         <a href="#languages">Languages</a>
-        <a href="#contact">Personal &amp; Contact</a>
-      </nav>
 
-      <div class="sidebar-contact" id="sidebarContact">
-        <a href="mailto:malam.bff@gmail.com">malam.bff@gmail.com</a>
-        <a href="tel:+8801489842990">+88 01489-84299</a>
-        <a href="http://bd.linkedin.com/in/malam.bff" target="_blank" rel="noopener">LinkedIn ↗</a>
-        <a href="https://scholar.google.com/citations?view_op=list_works&hl=en&hl=en&user=0euV3D4AAAAJ&pagesize=100" target="_blank" rel="noopener">Google Scholar ↗</a>
-        <a href="https://www.gstu.ac.bd/fe/student/fifth/Arafat" target="_blank" rel="noopener">GSTU Profile ↗</a>
-      </div>
+        <a href="#contact">Contact</a>
+
+    </nav>
+
+
+    <div class="sidebar-contact">
+
+        <a href="mailto:malam.bff@gmail.com">
+            malam.bff@gmail.com
+        </a>
+
+        <a href="tel:+880148984299">
+            +880 1489-84299
+        </a>
+
+        <a
+            href="https://bd.linkedin.com/in/malam.bff"
+            target="_blank"
+            rel="noopener"
+        >
+            LinkedIn ↗️
+        </a>
+
+        <a
+            href="https://scholar.google.com/citations?view_op=list_works&hl=en&user=0euV3D4AAAAJ"
+            target="_blank"
+            rel="noopener"
+        >
+            Google Scholar ↗️
+        </a>
+
+        <div class="sidebar-note">
+            Last updated September 2026
+        </div>
+
     </div>
 
-    <div class="sidebar-note">Gopalganj Science &amp; Technology University<br>Gopalganj‑8105, Bangladesh</div>
-  </aside>
+</aside>
 
-  <!-- ===================== MAIN ===================== -->
-  <main>
 
-    <div class="hero-eyebrow">Curriculum Vitae — updated September 2026</div>
-    <h1 class="hero-name">Md. Arafat Alam</h1>
-    <p class="hero-tagline">Food Engineering student, campus correspondent, and community &amp; youth‑leadership organizer.</p>
-    <div class="hero-meta">
-      <span>Gopalganj Science &amp; Technology University</span>
-      <span>Gopalganj, Bangladesh</span>
-      <span>Bangladeshi</span>
+
+<!-- ======================================================
+     MAIN
+====================================================== -->
+
+<main>
+
+
+<!-- ======================================================
+     HERO
+====================================================== -->
+
+<section class="hero" id="profile">
+
+    <div class="hero-eyebrow animate">
+        Curriculum Vitae
     </div>
 
-    <!-- ===== PROFILE ===== -->
-    <section class="dossier" id="profile">
-      <div class="profile-block">
-        <p>Final‑year Food Engineering student at Gopalganj Science &amp; Technology University (GSTU), with a parallel record in campus journalism, community organizing, and youth leadership across Bangladesh. Currently serves as GSTU Correspondent for Campus Times Echo Sphere Media and has authored opinion pieces for national outlets including TNN Agency.</p>
-        <p>Active in national civic service through Bangladesh Ansar and VDP, including platoon command during two national parliamentary elections. Founder and President of Connecting Dots, a platform linking grassroots creative initiatives, and holds leadership or membership roles across more than a dozen student, literary, and volunteer organizations.</p>
-      </div>
-    </section>
 
-    <!-- ===== EDUCATION ===== -->
-    <section class="dossier" id="education">
-      <div class="section-head"><h2>Education</h2><span class="count">5 entries</span></div>
+    <h1 class="hero-name animate delay-1">
+        Md. Arafat Alam
+    </h1>
 
-      <div class="entry">
-        <div class="entry-year">2022 – 2027<br><span class="note-pending">(expected)</span></div>
-        <div>
-          <div class="entry-title">B.Sc. (Engineering), Food Engineering</div>
-          <div class="entry-org">Gopalganj Science &amp; Technology University, Gopalganj — Academic Session 2022–23</div>
+
+    <div class="hero-tagline animate delay-2">
+        Food Engineering student, youth leader,
+        writer and presenter.
+    </div>
+
+
+    <div class="hero-meta animate delay-3">
+
+        <span>
+            Gopalganj Science and Technology University
+        </span>
+
+        <span>
+            Bangladesh
+        </span>
+
+        <span>
+            Food Engineering
+        </span>
+
+    </div>
+
+
+    <div class="profile-area animate delay-4">
+
+        <!--
+            PUT YOUR PHOTO IN THE SAME FOLDER AS THIS HTML
+            AND NAME IT:
+
+            profile.jpg
+        -->
+
+        <img
+            src="profile.jpg"
+            alt="Md. Arafat Alam"
+            class="profile-photo"
+            onerror="this.style.display='none';document.getElementById('photoPlaceholder').style.display='flex';"
+        >
+
+        <div
+            id="photoPlaceholder"
+            class="profile-photo-placeholder"
+            style="display:none;"
+        >
+            Add<br>profile.jpg
         </div>
-      </div>
 
-      <div class="entry">
-        <div class="entry-year">2020 – 2022</div>
-        <div>
-          <div class="entry-title">Higher Secondary Certificate (HSC), Science</div>
-          <div class="entry-org">Cumilla Government City College, Cumilla — Cumilla Board · GPA 5.00</div>
+
+        <div class="profile-text">
+
+            <strong style="color:var(--white);">
+                Profile
+            </strong>
+
+            <p style="margin-top:8px;">
+                A Food Engineering student with interests in
+                leadership, communication, writing, environmental
+                education, youth engagement and academic activities.
+            </p>
+
         </div>
-      </div>
 
-      <div class="entry">
-        <div class="entry-year">2018 – 2020</div>
-        <div>
-          <div class="entry-title">Secondary School Certificate (SSC), Science</div>
-          <div class="entry-org">Ibn Taimiaya School and College, Cumilla — Cumilla Board · GPA 5.00</div>
+    </div>
+
+
+    <div class="button-row animate delay-5">
+
+        <a
+            class="btn"
+            href="#contact"
+        >
+            Contact Me
+        </a>
+
+        <a
+            class="btn green"
+            href="#publications"
+        >
+            View Publications
+        </a>
+
+    </div>
+
+</section>
+
+
+
+<!-- ======================================================
+     EDUCATION
+====================================================== -->
+
+<section id="education">
+
+    <div class="section-header">
+
+        <h2>Education</h2>
+
+        <span class="section-count">
+            Academic Background
+        </span>
+
+    </div>
+
+
+    <div class="entry">
+
+        <div class="entry-year">
+            Current
         </div>
-      </div>
 
-      <div class="entry">
-        <div class="entry-year">2017</div>
         <div>
-          <div class="entry-title">Junior School Certificate (JSC)</div>
-          <div class="entry-org">Chaumuhuni Bazar Mujibul Hoq High School, Chauddagram, Cumilla — GPA 3.67</div>
-        </div>
-      </div>
 
-      <div class="entry">
-        <div class="entry-year">2014</div>
+            <div class="entry-title">
+                Bachelor of Science in Food Engineering
+            </div>
+
+            <div class="entry-org">
+                Gopalganj Science and Technology University (GSTU)
+            </div>
+
+            <div class="entry-desc">
+                Department of Food Engineering, Bangladesh.
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div class="entry">
+
+        <div class="entry-year">
+            Earlier
+        </div>
+
         <div>
-          <div class="entry-title">Primary School Certificate (PSC)</div>
-          <div class="entry-org">Chaumuhuni Modern Junior High School, Chauddagram, Cumilla — GPA 3.56</div>
+
+            <div class="entry-title">
+                Secondary & Higher Secondary Education
+            </div>
+
+            <div class="entry-org">
+                Bangladesh
+            </div>
+
         </div>
-      </div>
-    </section>
 
-    <!-- ===== EXPERIENCE ===== -->
-    <section class="dossier" id="experience">
-      <div class="section-head"><h2>Professional Experience</h2><span class="count">6 entries</span></div>
+    </div>
 
-      <div class="entry">
-        <div class="entry-year">2025 – 2030</div>
+</section>
+
+
+
+<!-- ======================================================
+     EXPERIENCE
+====================================================== -->
+
+<section id="experience">
+
+    <div class="section-header">
+
+        <h2>Experience & Activities</h2>
+
+        <span class="section-count">
+            Selected
+        </span>
+
+    </div>
+
+
+    <div class="entry">
+
+        <div class="entry-year">
+            2026
+        </div>
+
         <div>
-          <div class="entry-title">GSTU Correspondent</div>
-          <div class="entry-org">Campus Times Echo Sphere Media Limited</div>
-          <div class="entry-desc">National, online‑based news media; fixed‑term contract covering Gopalganj Science and Technology University.</div>
-        </div>
-      </div>
 
-      <div class="entry">
-        <div class="entry-year">2024 – 2025</div>
+            <div class="entry-title">
+                Team Member & Presenter
+            </div>
+
+            <div class="entry-org">
+                Workshop on Applied Dietetics
+            </div>
+
+            <div class="entry-desc">
+                Participated in a team project concerning dietary
+                management suggestions for diabetes, cardiovascular,
+                kidney and gastrointestinal disease.
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div class="entry">
+
+        <div class="entry-year">
+            2026
+        </div>
+
         <div>
-          <div class="entry-title">Assistant Director &amp; Senior Instructor</div>
-          <div class="entry-org">Merit Care Academy, Gopalganj District Branch</div>
-          <div class="entry-desc">Academic coaching centre.</div>
-        </div>
-      </div>
 
-      <div class="entry">
-        <div class="entry-year">2023 – Present</div>
+            <div class="entry-title">
+                Team Leader & Presenter
+            </div>
+
+            <div class="entry-org">
+                International Seminar on Eco Leadership Summit
+            </div>
+
+            <div class="entry-desc">
+                Presented on communication skills and leadership in
+                environmental management and green education.
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- ======================================================
+     LEADERSHIP
+====================================================== -->
+
+<section id="leadership">
+
+    <div class="section-header">
+
+        <h2>Leadership & Volunteering</h2>
+
+        <span class="section-count">
+            Selected Roles
+        </span>
+
+    </div>
+
+
+    <div class="entry">
+
+        <div class="entry-year">
+            2026
+        </div>
+
         <div>
-          <div class="entry-title">Member</div>
-          <div class="entry-org">Bangladesh Ansar and VDP</div>
-        </div>
-      </div>
 
-      <div class="entry">
-        <div class="entry-year">2023 – 2024</div>
+            <div class="entry-title">
+                Team Leader
+            </div>
+
+            <div class="entry-org">
+                International Environment Policy Training
+            </div>
+
+            <div class="entry-desc">
+                Worked on problem identification, creative
+                solution development, visual representation and
+                team presentation.
+            </div>
+
+            <span class="entry-tag">
+                LEADERSHIP
+            </span>
+
+        </div>
+
+    </div>
+
+
+    <div class="entry">
+
+        <div class="entry-year">
+            Youth
+        </div>
+
         <div>
-          <div class="entry-title">Campus Correspondent</div>
-          <div class="entry-org">Songbad Bulletin</div>
-          <div class="entry-desc">National‑level campus news portal.</div>
-        </div>
-      </div>
 
-      <div class="entry">
-        <div class="entry-year">2023 – 2024</div>
+            <div class="entry-title">
+                Youth Engagement & Communication
+            </div>
+
+            <div class="entry-org">
+                Various youth and educational initiatives
+            </div>
+
+            <div class="entry-desc">
+                Participation in youth conferences, educational
+                programs, communication activities and leadership
+                initiatives.
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- ======================================================
+     AFFILIATIONS
+====================================================== -->
+
+<section id="affiliations">
+
+    <div class="section-header">
+
+        <h2>Affiliations</h2>
+
+        <span class="section-count">
+            Organizations
+        </span>
+
+    </div>
+
+
+    <div class="entry">
+
+        <div class="entry-year">
+            Current
+        </div>
+
         <div>
-          <div class="entry-title">Instructor (Teacher)</div>
-          <div class="entry-org">Galaxy Coaching Center</div>
-          <div class="entry-desc">Academic coaching for Secondary and Higher Secondary students.</div>
-        </div>
-      </div>
 
-      <div class="entry">
-        <div class="entry-year">2023</div>
+            <div class="entry-title">
+                Gopalganj Science and Technology University
+            </div>
+
+            <div class="entry-org">
+                Department of Food Engineering
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div class="entry">
+
+        <div class="entry-year">
+            Youth
+        </div>
+
         <div>
-          <div class="entry-title">Guest Teacher, Science &amp; Mathematics (Class 6–10)</div>
-          <div class="entry-org">Hossenpur Riazul Jannah Hakimiya Madrashah, Chauddagram, Cumilla</div>
+
+            <div class="entry-title">
+                Youth & Educational Organizations
+            </div>
+
+            <div class="entry-org">
+                Participation in leadership, environment and
+                communication programs
+            </div>
+
         </div>
-      </div>
-    </section>
 
-    <!-- ===== LEADERSHIP / EVENT ORGANIZATION ===== -->
-    <section class="dossier" id="leadership">
-      <div class="section-head"><h2>Leadership &amp; Event Organization</h2><span class="count">10 entries</span></div>
+    </div>
 
-      <div class="entry">
-        <div class="entry-year">2026</div>
+</section>
+
+
+
+<!-- ======================================================
+     CONFERENCES
+====================================================== -->
+
+<section id="conferences">
+
+    <div class="section-header">
+
+        <h2>Conferences & Competitions</h2>
+
+        <span class="section-count">
+            Selected
+        </span>
+
+    </div>
+
+
+    <div class="entry">
+
+        <div class="entry-year">
+            2021
+        </div>
+
         <div>
-          <div class="entry-title">President &amp; Organizer, Youth Quran Recitation Competition‑2026</div>
-          <div class="entry-org">Connecting Dots</div>
-        </div>
-      </div>
 
-      <div class="entry">
-        <div class="entry-year">2026</div>
+            <div class="entry-title">
+                Tarun Lekhok Sommelon
+            </div>
+
+            <div class="entry-org">
+                Bangla Sahitya Angan
+            </div>
+
+            <div class="entry-desc">
+                Youth writers' conference focused on encouraging
+                young delegates toward good writing.
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div class="entry">
+
+        <div class="entry-year">
+            2020
+        </div>
+
         <div>
-          <div class="entry-title">Organizer, "Lungi Misil" (Lungi Rally)</div>
-          <div class="entry-org">Gopalganj Science &amp; Technology University — 14 April 2026, Hadi Chattar</div>
-          <div class="entry-desc">A distinctive lungi‑clad rally celebrating Pohela Boishakh (Bengali New Year); covered by national media (Daily Sakalbela, 15 April 2026).</div>
-        </div>
-      </div>
 
-      <div class="entry">
-        <div class="entry-year">2026</div>
+            <div class="entry-title">
+                International Youth Math Challenge
+            </div>
+
+            <div class="entry-org">
+                International virtual mathematics competition
+            </div>
+
+            <div class="entry-desc">
+                Participated at age 16 and passed the first round
+                with special commendation.
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- ======================================================
+     PUBLICATIONS
+====================================================== -->
+
+<section id="publications">
+
+    <div class="section-header">
+
+        <h2>Publications & Book Chapters</h2>
+
+        <span class="section-count">
+            2 entries
+        </span>
+
+    </div>
+
+
+    <div class="entry">
+
+        <div class="entry-year">
+            2025
+        </div>
+
         <div>
-          <div class="entry-title">Organizer, "Light of Sirah: Sirat Competition 2026"</div>
-          <div class="entry-org">Al‑Quran and Cultural Study Club, GSTU — 24 September 2026, Muktamancha</div>
-        </div>
-      </div>
 
-      <div class="entry">
-        <div class="entry-year">2025</div>
+            <div class="entry-title">
+                "Shaheed Titumir to Shaheed Hadi"
+            </div>
+
+            <div class="entry-org">
+                Book chapter in
+                <em>
+                    Shaheed Sharif Usman Hadi:
+                    In Memory, In Literature, In Struggle
+                </em>
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div class="entry">
+
+        <div class="entry-year">
+            2025
+        </div>
+
         <div>
-          <div class="entry-title">Program Designer &amp; Host, Fresher Reception and Career Guideline Program</div>
-          <div class="entry-org">GSTU Campus — 4 December 2025</div>
-          <div class="entry-desc">Audience of over 1,500 students.</div>
-        </div>
-      </div>
 
-      <div class="entry">
-        <div class="entry-year">2025</div>
+            <div class="entry-title">
+                "The Conflict Between Leadership and Followership"
+            </div>
+
+            <div class="entry-org">
+                The Campus Mirror Magazine
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- ======================================================
+     MEDIA
+====================================================== -->
+
+<section id="media">
+
+    <div class="section-header">
+
+        <h2>Media & Opinion Writing</h2>
+
+        <span class="section-count">
+            4 entries
+        </span>
+
+    </div>
+
+
+    <div class="entry">
+
+        <div class="entry-year">
+            2026
+        </div>
+
         <div>
-          <div class="entry-title">Organizer &amp; President, MeritCare A+ Reception, Career Guidelines and Cultural Fest‑2025</div>
-          <div class="entry-org">MeritCare Academy — Powra Auditorium, Gopalganj — 23 August 2025</div>
-        </div>
-      </div>
 
-      <div class="entry">
-        <div class="entry-year">2024</div>
+            <div class="entry-title">
+                নীল পদ্মের ঘ্রাণ:
+                অটিজম সচেতনতায় নতুন ভোরের অঙ্গীকার
+            </div>
+
+            <div class="entry-org">
+                <a
+                    href="https://www.tnnagency.com/opinion/news/6173"
+                    target="_blank"
+                    rel="noopener"
+                >
+                    TNN Agency ↗️
+                </a>
+            </div>
+
+            <span class="entry-tag">
+                AUTHORED
+            </span>
+
+        </div>
+
+    </div>
+
+
+    <div class="entry">
+
+        <div class="entry-year">
+            2025
+        </div>
+
         <div>
-          <div class="entry-title">Event Designer, Moderator &amp; President, "Genius of the Year"</div>
-          <div class="entry-org">Genius Association of North Chauddagram</div>
-        </div>
-      </div>
 
-      <div class="entry">
-        <div class="entry-year">2024</div>
+            <div class="entry-title">
+                রোহিঙ্গা শরণার্থী শিবির:
+                এক দশকের অনিশ্চয়তায় নীরব দ্বিতীয় গাজা
+            </div>
+
+            <div class="entry-org">
+                <a
+                    href="https://www.tnnagency.com/opinion/news/2547"
+                    target="_blank"
+                    rel="noopener"
+                >
+                    TNN Agency ↗️
+                </a>
+            </div>
+
+            <span class="entry-tag">
+                AUTHORED
+            </span>
+
+        </div>
+
+    </div>
+
+
+    <div class="entry">
+
+        <div class="entry-year">
+            2025
+        </div>
+
         <div>
-          <div class="entry-title">Moderator, "Grand Qawwali and Azadi Sondhya"</div>
-          <div class="entry-org">Inquilab Mancha, GSTU — 9 September 2024</div>
-          <div class="entry-desc">Cultural seminar and festival.</div>
-        </div>
-      </div>
 
-      <div class="entry">
-        <div class="entry-year">2024</div>
+            <div class="entry-title">
+                মতামত: দ্বিতীয় স্বাধীনতার এক বছর
+            </div>
+
+            <div class="entry-org">
+                <a
+                    href="https://www.tnnagency.com/opinion/news/268"
+                    target="_blank"
+                    rel="noopener"
+                >
+                    TNN Agency ↗️
+                </a>
+            </div>
+
+            <span class="entry-tag">
+                AUTHORED
+            </span>
+
+        </div>
+
+    </div>
+
+
+    <div class="entry">
+
+        <div class="entry-year">
+            2026
+        </div>
+
         <div>
-          <div class="entry-title">Volunteer, "Food Engineering Fest‑01"</div>
-          <div class="entry-org">Department of Food Engineering, GSTU — 28 September 2024</div>
-        </div>
-      </div>
 
-      <div class="entry">
-        <div class="entry-year">2023</div>
+            <div class="entry-title">
+                অটিজম সচেতনতা দিবস হোক সচেতনতা
+                আর অঙ্গীকারবদ্ধতার মূলমন্ত্র
+            </div>
+
+            <div class="entry-org">
+                <a
+                    href="https://www.protidinersangbad.com/todays-newspaper/campus/562796"
+                    target="_blank"
+                    rel="noopener"
+                >
+                    Protidiner Sangbad ↗️
+                </a>
+            </div>
+
+            <span class="entry-tag">
+                QUOTED
+            </span>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- ======================================================
+     PRESENTATIONS
+====================================================== -->
+
+<section id="presentations">
+
+    <div class="section-header">
+
+        <h2>Seminar & Workshop Presentations</h2>
+
+        <span class="section-count">
+            3 entries
+        </span>
+
+    </div>
+
+
+    <div class="entry">
+
+        <div class="entry-year">
+            Jun 2026
+        </div>
+
         <div>
-          <div class="entry-title">Organizer, "Genius of the Campus"</div>
-          <div class="entry-org">Connecting Dots — excellence‑hunt program</div>
-        </div>
-      </div>
 
-      <div class="entry">
-        <div class="entry-year">2022</div>
+            <div class="entry-title">
+                Dietary Management Suggestions for Diabetes,
+                Cardiovascular, Kidney and Gastrointestinal Disease
+            </div>
+
+            <div class="entry-org">
+                Workshop on Applied Dietetics,
+                Department of Food Engineering, GSTU
+            </div>
+
+            <div class="entry-desc">
+                Team Member and Presenter.
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div class="entry">
+
+        <div class="entry-year">
+            May 2026
+        </div>
+
         <div>
-          <div class="entry-title">Organizer, "Intra‑School Sports Tournament"</div>
-          <div class="entry-org">Connecting Dots</div>
-          <div class="entry-desc">Among students of 20+ secondary schools.</div>
+
+            <div class="entry-title">
+                The Role of Communication Skills and Leadership
+                in Environmental Management and Green Education
+            </div>
+
+            <div class="entry-org">
+                International Seminar on Eco Leadership Summit
+            </div>
+
+            <div class="entry-desc">
+                Team Leader.
+            </div>
+
         </div>
-      </div>
-    </section>
 
-    <!-- ===== AFFILIATIONS ===== -->
-    <section class="dossier" id="affiliations">
-      <div class="section-head"><h2>Affiliations &amp; Memberships</h2><span class="count">15 entries</span></div>
+    </div>
 
-      <div class="entry"><div class="entry-year">2026</div><div><div class="entry-title">Member, Debate Bangladesh</div><div class="entry-desc">National debating club connecting and organizing debaters across Bangladesh.</div></div></div>
 
-      <div class="entry"><div class="entry-year">2024 – Present</div><div><div class="entry-title">President, Connecting Dots</div><div class="entry-desc">A platform connecting small creative initiatives with one another.</div></div></div>
+    <div class="entry">
 
-      <div class="entry"><div class="entry-year">2024 – Present</div><div><div class="entry-title">Volunteer, World Assembly of Muslim Youth (WAMY)</div><div class="entry-desc">International non‑profit supporting orphans and the needy, including student scholarships and religious institutions.</div></div></div>
+        <div class="entry-year">
+            Sep 2025
+        </div>
 
-      <div class="entry"><div class="entry-year">2024 – Present</div><div><div class="entry-title">Member, Basundhara Shuvo Songho</div><div class="entry-desc">Social welfare club under the Bashundhara Group.</div></div></div>
-
-      <div class="entry"><div class="entry-year">2024 – 2026</div><div><div class="entry-title">Member, Bangladesh National Debate Platform (BNDP)</div></div></div>
-
-      <div class="entry"><div class="entry-year">2023 – Present</div><div><div class="entry-title">Member, Chauddagram Students' Forum (CSF)</div><div class="entry-desc">Unites and guides students from Chauddagram Upazila studying across the country.</div></div></div>
-
-      <div class="entry"><div class="entry-year">2023 – 2027</div><div><div class="entry-title">Member, Cumilla District Students' Association, GSTU</div><div class="entry-desc">Fixed‑term membership; held Secretary, Social Service (2025–2026).</div></div></div>
-
-      <div class="entry"><div class="entry-year">2023 – 2026</div><div><div class="entry-title">Member &amp; Publicity Secretary, Bangladesh Torun Column Lekhok Forum, GSTU</div><div class="entry-desc">Platform for young writers of poems, columns and other writing.</div></div></div>
-
-      <div class="entry"><div class="entry-year">2023 – 2025</div><div><div class="entry-title">Executive Council Member, GSTU Journalist Association</div></div></div>
-
-      <div class="entry"><div class="entry-year">2023 – 2024</div><div><div class="entry-title">Chairman, Kishorkontha Foundation — Kotalipara Upazila Branch</div><div class="entry-desc">Works to improve academic standards for adolescent students, educational support, and reading circles.</div></div></div>
-
-      <div class="entry"><div class="entry-year">2023</div><div><div class="entry-title">Member, GSTU Career Club</div></div></div>
-
-      <div class="entry"><div class="entry-year">2022 – 2026</div><div><div class="entry-title">Member, Bangla Sahitya Angan</div><div class="entry-desc">Unified platform for Bangladeshi literary writers.</div></div></div>
-
-      <div class="entry"><div class="entry-year">2021 – Present</div><div><div class="entry-title">Member, Chaumuhuni Bazar Mujibul Haque High School Former Students' Association</div></div></div>
-
-      <div class="entry"><div class="entry-year">2019 – Present</div><div><div class="entry-title">Member, Domoria Torun Jot Songothon</div><div class="entry-desc">Builds unity among village youth and fosters positivity.</div></div></div>
-
-      <div class="entry"><div class="entry-year">2018 – 2019</div><div><div class="entry-title">Founding Member, RKA Online Research Home</div><div class="entry-desc">Youth research club, founded at age 14; produced exhibited projects on engine‑powered boats, turbine electricity generation, drone structures, and internet‑based research. No longer active.</div></div></div>
-    </section>
-
-    <!-- ===== CONFERENCES / WORKSHOPS ===== -->
-    <section class="dossier" id="conferences">
-      <div class="section-head"><h2>Conferences, Workshops &amp; Programs</h2><span class="count">12 entries</span></div>
-
-      <div class="entry"><div class="entry-year">2026</div><div><div class="entry-title">International Eco Leadership Summit 2026</div><div class="entry-org">18th International Training on Sustainable Environment Policy and Youth Entrepreneurship — EEE Conference Hall, GSTU</div><div class="entry-desc">Organized in affiliation with GSTU, International Youth Leadership School, GSTU Radio, and Shishu Ullash. Interactive sessions, panel discussions, lectures, and a presentation competition.</div></div></div>
-
-      <div class="entry"><div class="entry-year">2026</div><div><div class="entry-title">Training on International Environment Policy, Green Education, Leadership and Communication</div><div class="entry-org">Shishu Ullash Organization (Global Youth Platform)</div></div></div>
-
-      <div class="entry"><div class="entry-year">2026</div><div><div class="entry-title">Platoon Commander, National Election Duty</div><div class="entry-org">Bangladesh Ansar and VDP — 13th National Parliamentary Election, 12 February 2026</div><div class="entry-desc">9 days of armed duty commanding a 15‑member platoon.</div></div></div>
-
-      <div class="entry"><div class="entry-year">2025</div><div><div class="entry-title">Host, University Cultural Program</div><div class="entry-org">Muktamancha, GSTU</div><div class="entry-desc">For over 2,000 students, attended by the Vice Chancellor, Pro Vice Chancellor and other university leadership.</div></div></div>
-
-      <div class="entry"><div class="entry-year">2024</div><div><div class="entry-title">WAMY Da'yee &amp; Volunteer Meeting (اجتماع الدعاة والمتطوعين)</div><div class="entry-org">World Assembly of Muslim Youth — Shafipur, Gazipur, 22 November 2024</div><div class="entry-desc">Attended in the presence of the Minister of Commerce (Advisor, Interim Government), WAMY international leadership, and WAMY Bangladesh officials.</div></div></div>
-
-      <div class="entry"><div class="entry-year">2024</div><div><div class="entry-title">Writing and Basic Journalism Workshop</div><div class="entry-org">Center for Advanced Media Education — 2 days</div><div class="entry-desc">Copywriting, media law, ethics, professional conduct, and journalism fundamentals, led by senior media and government information officials.</div></div></div>
-
-      <div class="entry"><div class="entry-year">2024</div><div><div class="entry-title">Platoon Commander, National Election Duty</div><div class="entry-org">Bangladesh Ansar and VDP — 12th National Parliamentary Election, 7 January 2024</div><div class="entry-desc">9 days of armed duty commanding a 15‑member platoon.</div></div></div>
-
-      <div class="entry"><div class="entry-year">2024</div><div><div class="entry-title">Special Guest, "Eid Punarmilani O Anondo Bhraman" (Eid Reunion and Joy Excursion)</div><div class="entry-org">Kishorkontha Foundation, Shariatpur District Branch</div></div></div>
-
-      <div class="entry"><div class="entry-year">2023 – 2024<br><span class="note-pending">date pending</span></div><div><div class="entry-title">Chief Speaker, "Road to Success"</div><div class="entry-org">Career guideline symposium for secondary school students</div><div class="entry-desc">Speech: "আগে আলোকিত হও, পরে ছড়িয়ে দাও" (Illuminate Yourself First, Then Spread the Light).</div></div></div>
-
-      <div class="entry"><div class="entry-year">2023 – 2024<br><span class="note-pending">date pending</span></div><div><div class="entry-title">Special Guest, Prize Giving Ceremony</div><div class="entry-org">Kishorkontha Foundation, Gopalganj Zila Unit</div><div class="entry-desc">Speech: "ছোট অর্জনগুলো হোক রিভলুশনারি অর্জনের প্রেরনা" (Let Small Achievements Be the Inspiration for Revolutionary Achievement).</div></div></div>
-
-      <div class="entry"><div class="entry-year">2021</div><div><div class="entry-title">Tarun Lekhok Sommelon (Youth Writers' Conference)</div><div class="entry-org">Bangla Sahitya Angan</div><div class="entry-desc">Day‑long conference to teach and motivate youth delegates toward good writing.</div></div></div>
-
-      <div class="entry"><div class="entry-year">2020</div><div><div class="entry-title">International Youth Math Challenge</div><div class="entry-org">International virtual mathematics competition</div><div class="entry-desc">Competed at age 16; passed the first round with special commendation for a well‑composed, visually representative submission.</div></div></div>
-    </section>
-
-    <!-- ===== PUBLICATIONS ===== -->
-    <section class="dossier" id="publications">
-      <div class="section-head"><h2>Publications &amp; Book Chapters</h2><span class="count">2 entries</span></div>
-
-      <div class="entry">
-        <div class="entry-year">2025</div>
         <div>
-          <div class="entry-title">"Shaheed Titumir to Shaheed Hadi" (book chapter)</div>
-          <div class="entry-org">In <em>Shaheed Sharif Usman Hadi: In Memory, In Literature, In Struggle</em> (শহীদ ওসমান হাদি: স্মৃতিতে, সাহিত্যে, সংগ্রামে), ed. I.A. Rudra &amp; Tahsan A.</div>
-        </div>
-      </div>
 
-      <div class="entry">
-        <div class="entry-year">2025</div>
+            <div class="entry-title">
+                Importance of Understanding Cell Structure
+                and Anatomy of Cell Division
+            </div>
+
+            <div class="entry-org">
+                Inter-Campus Conference on General Microbiology
+            </div>
+
+            <div class="entry-desc">
+                Team Member.
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- ======================================================
+     CERTIFICATES
+====================================================== -->
+
+<section id="certificates">
+
+    <div class="section-header">
+
+        <h2>Certificates & Honors</h2>
+
+        <span class="section-count">
+            3 entries
+        </span>
+
+    </div>
+
+
+    <div class="entry">
+
+        <div class="entry-year">
+            2026
+        </div>
+
         <div>
-          <div class="entry-title">"The Conflict Between Leadership and Followership" (নেতৃত্ব আর অনুসারিতার দ্বন্দ্ব)</div>
-          <div class="entry-org">The Campus Mirror Magazine — October 2025</div>
+
+            <div class="entry-title">
+                2nd Place — Inter-Delegate Panel Discussion Competition
+            </div>
+
+            <div class="entry-org">
+                International Environment Policy Training
+            </div>
+
+            <div class="entry-desc">
+                Served as team leader and representative.
+            </div>
+
+            <span class="entry-tag">
+                AWARD
+            </span>
+
         </div>
-      </div>
-    </section>
 
-    <!-- ===== MEDIA ===== -->
-    <section class="dossier" id="media">
-      <div class="section-head"><h2>Media &amp; Opinion Writing</h2><span class="count">4 entries</span></div>
+    </div>
 
-      <div class="entry">
-        <div class="entry-year">2 Apr 2026</div>
+
+    <div class="entry">
+
+        <div class="entry-year">
+            2026
+        </div>
+
         <div>
-          <div class="entry-title">"নীল পদ্মের ঘ্রাণ: অটিজম সচেতনতায় নতুন ভোরের অঙ্গীকার"</div>
-          <div class="entry-org"><a href="https://www.tnnagency.com/opinion/news/6173" target="_blank" rel="noopener">TNN Agency ↗</a></div>
-          <span class="entry-tag">Authored</span>
-        </div>
-      </div>
 
-      <div class="entry">
-        <div class="entry-year">24 Nov 2025</div>
+            <div class="entry-title">
+                Certificate of Excellence
+            </div>
+
+            <div class="entry-org">
+                Shishu Ullash Organization
+            </div>
+
+            <div class="entry-desc">
+                Recognition for dedication to environmental policy,
+                green education, leadership and communication.
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div class="entry">
+
+        <div class="entry-year">
+            2023
+        </div>
+
         <div>
-          <div class="entry-title">"রোহিঙ্গা শরণার্থী শিবির: এক দশকের অনিশ্চয়তায় নীরব 'দ্বিতীয় গাজা'"</div>
-          <div class="entry-org"><a href="https://www.tnnagency.com/opinion/news/2547" target="_blank" rel="noopener">TNN Agency ↗</a></div>
-          <span class="entry-tag">Authored</span>
+
+            <div class="entry-title">
+                VDP Training Certificate – Armed
+            </div>
+
+            <div class="entry-org">
+                Bangladesh Ansar and Village Defence Party
+            </div>
+
         </div>
-      </div>
 
-      <div class="entry">
-        <div class="entry-year">6 Aug 2025</div>
-        <div>
-          <div class="entry-title">"মতামত: দ্বিতীয় স্বাধীনতার এক বছর: শিক্ষার্থীদের কণ্ঠে আশা, হতাশা আর প্রাপ্তির হিসেব"</div>
-          <div class="entry-org"><a href="https://www.tnnagency.com/opinion/news/268" target="_blank" rel="noopener">TNN Agency ↗</a></div>
-          <span class="entry-tag">Authored</span>
-        </div>
-      </div>
+    </div>
 
-      <div class="entry">
-        <div class="entry-year">9 Apr 2026</div>
-        <div>
-          <div class="entry-title">"অটিজম সচেতনতা দিবস হোক সচেতনতা আর অঙ্গীকারবদ্ধতার মূলমন্ত্র"</div>
-          <div class="entry-org"><a href="https://www.protidinersangbad.com/todays-newspaper/campus/562796" target="_blank" rel="noopener">Protidiner Sangbad ↗</a></div>
-          <span class="entry-tag">Quoted</span>
-        </div>
-      </div>
-    </section>
+</section>
 
-    <!-- ===== PRESENTATIONS ===== -->
-    <section class="dossier" id="presentations">
-      <div class="section-head"><h2>Seminar &amp; Workshop Presentations</h2><span class="count">3 entries</span></div>
 
-      <div class="entry">
-        <div class="entry-year">Jun 2026</div>
-        <div>
-          <div class="entry-title">Dietary Management Suggestions for Diabetes, Cardiovascular, Kidney and Gastrointestinal Disease</div>
-          <div class="entry-org">Workshop on Applied Dietetics, Department of Food Engineering, GSTU</div>
-          <div class="entry-desc">Team project — role: Team Member and Presenter.</div>
-        </div>
-      </div>
 
-      <div class="entry">
-        <div class="entry-year">12 May 2026</div>
-        <div>
-          <div class="entry-title">The Role of Communication Skills and Leadership in Environmental Management and Green Education</div>
-          <div class="entry-org">Keynote presentation, International Seminar on Eco Leadership Summit, Shishu Ullash Organization</div>
-          <div class="entry-desc">Team project — role: Team Leader.</div>
-        </div>
-      </div>
+<!-- ======================================================
+     LANGUAGES
+====================================================== -->
 
-      <div class="entry">
-        <div class="entry-year">Sep 2025</div>
-        <div>
-          <div class="entry-title">Importance of Understanding Cell Structure and Anatomy of Cell Division</div>
-          <div class="entry-org">Inter‑Campus Conference on General Microbiology, Department of Food Engineering, GSTU</div>
-          <div class="entry-desc">Team project — role: Team Member.</div>
-        </div>
-      </div>
-    </section>
+<section id="languages">
 
-    <!-- ===== CERTIFICATES ===== -->
-    <section class="dossier" id="certificates">
-      <div class="section-head"><h2>Certificates &amp; Honors</h2><span class="count">3 entries</span></div>
+    <div class="section-header">
 
-      <div class="entry">
-        <div class="entry-year">2026</div>
-        <div>
-          <div class="entry-title">2nd Place, Inter‑Delegate Panel Discussion Competition</div>
-          <div class="entry-org">International Environment Policy Training — team "EliteCrew"</div>
-          <div class="entry-desc">Problem‑finding, creative solution‑making, and visual representation competition; served as team leader and representative.</div>
-        </div>
-      </div>
+        <h2>Languages</h2>
 
-      <div class="entry">
-        <div class="entry-year">2026</div>
-        <div>
-          <div class="entry-title">Certificate of Excellence</div>
-          <div class="entry-org">Shishu Ullash Organization (Global Youth Platform)</div>
-          <div class="entry-desc">For outstanding dedication in the Training on International Environment Policy, Green Education, Leadership and Communication program.</div>
-        </div>
-      </div>
+    </div>
 
-      <div class="entry">
-        <div class="entry-year">2023</div>
-        <div>
-          <div class="entry-title">VDP Training Certificate – Armed</div>
-          <div class="entry-org">Bangladesh Ansar and Village Defence Party, Government of the People's Republic of Bangladesh</div>
-          <div class="entry-desc">21‑day course: self‑defense, social security, paramilitary training, discipline, weapons handling, basic repairs, social leadership, and crisis response.</div>
-        </div>
-      </div>
-    </section>
 
-    <!-- ===== LANGUAGES ===== -->
-    <section class="dossier" id="languages">
-      <div class="section-head"><h2>Languages</h2></div>
-      <table class="simple">
-        <tr><th>Language</th><th>Proficiency</th></tr>
-        <tr><td class="lead">Bangla</td><td>Native / Expert — reading, writing, speaking</td></tr>
-        <tr><td class="lead">English</td><td>Intermediate — reading, writing, speaking</td></tr>
-        <tr><td class="lead">Arabic</td><td>Basic — reading only</td></tr>
-        <tr><td class="lead">Hindi</td><td>Basic — listening comprehension only</td></tr>
-        <tr><td class="lead">Urdu</td><td>Basic — listening comprehension only</td></tr>
-      </table>
-    </section>
+    <table class="simple">
 
-    <!-- ===== CONTACT ===== -->
-    <section class="dossier" id="contact">
-      <div class="section-head"><h2>Personal &amp; Contact</h2></div>
-      <table class="simple">
-        <tr><td class="lead">Full name</td><td>Md. Arafat Alam</td></tr>
-        <tr><td class="lead">Date of birth</td><td>28 March 2004</td></tr>
-        <tr><td class="lead">Nationality</td><td>Bangladeshi</td></tr>
-        <tr><td class="lead">Gender</td><td>Male</td></tr>
-        <tr><td class="lead">Marital status</td><td>Unmarried</td></tr>
-        <tr><td class="lead">Institutional address</td><td>Department of Food Engineering, Gopalganj Science and Technology University, Gopalganj‑8105, Bangladesh</td></tr>
-        <tr><td class="lead">Present address</td><td>B‑Block, Sadhinata Dibash Hall, Gopalganj Science and Technology University‑8105</td></tr>
-        <tr><td class="lead">Permanent address</td><td>Village Domoria, Post Office Chaumuhuni Bazar, Union 4no Sreepur Union, Chauddagram‑3550, Cumilla</td></tr>
-        <tr><td class="lead">Phone</td><td>(88) 01489‑84299 — WhatsApp / Telegram</td></tr>
-        <tr><td class="lead">Email</td><td>malam.bff@gmail.com · arafat.alam@gstu.edu.bd</td></tr>
-        <tr><td class="lead">LinkedIn</td><td><a href="http://bd.linkedin.com/in/malam.bff" target="_blank" rel="noopener">bd.linkedin.com/in/malam.bff ↗</a></td></tr>
-        <tr><td class="lead">Google Scholar</td><td><a href="https://scholar.google.com/citations?view_op=list_works&hl=en&hl=en&user=0euV3D4AAAAJ&pagesize=100" target="_blank" rel="noopener">Profile ↗</a></td></tr>
-        <tr><td class="lead">Facebook</td><td><a href="https://www.facebook.com/arafatgstu" target="_blank" rel="noopener">facebook.com/arafatgstu ↗</a></td></tr>
-        <tr><td class="lead">GSTU profile</td><td><a href="https://www.gstu.ac.bd/fe/student/fifth/Arafat" target="_blank" rel="noopener">gstu.ac.bd ↗</a></td></tr>
-      </table>
-    </section>
+        <tr>
+            <th>Language</th>
+            <th>Proficiency</th>
+        </tr>
 
-    <footer class="page-footer">
-      <span>Md. Arafat Alam — Curriculum Vitae</span>
-      <span>Last updated September 2026</span>
-    </footer>
+        <tr>
+            <td class="lead">Bangla</td>
+            <td>Native / Expert</td>
+        </tr>
 
-  </main>
+        <tr>
+            <td class="lead">English</td>
+            <td>Intermediate</td>
+        </tr>
+
+        <tr>
+            <td class="lead">Arabic</td>
+            <td>Basic — reading</td>
+        </tr>
+
+        <tr>
+            <td class="lead">Hindi</td>
+            <td>Basic — listening</td>
+        </tr>
+
+        <tr>
+            <td class="lead">Urdu</td>
+            <td>Basic — listening</td>
+        </tr>
+
+    </table>
+
+</section>
+
+
+
+<!-- ======================================================
+     CONTACT
+====================================================== -->
+
+<section id="contact">
+
+    <div class="section-header">
+
+        <h2>Personal & Contact</h2>
+
+    </div>
+
+
+    <table class="simple">
+
+        <tr>
+            <td class="lead">Full name</td>
+            <td>Md. Arafat Alam</td>
+        </tr>
+
+        <tr>
+            <td class="lead">Date of birth</td>
+            <td>28 March 2004</td>
+        </tr>
+
+        <tr>
+            <td class="lead">Nationality</td>
+            <td>Bangladeshi</td>
+        </tr>
+
+        <tr>
+            <td class="lead">Institution</td>
+            <td>
+                Gopalganj Science and Technology University
+            </td>
+        </tr>
+
+        <tr>
+            <td class="lead">Department</td>
+            <td>
+                Department of Food Engineering
+            </td>
+        </tr>
+
+        <tr>
+            <td class="lead">Phone</td>
+            <td>
+                <a href="tel:+880148984299">
+                    +880 1489-84299
+                </a>
+            </td>
+        </tr>
+
+        <tr>
+            <td class="lead">Email</td>
+            <td>
+                <a href="mailto:malam.bff@gmail.com">
+                    malam.bff@gmail.com
+                </a>
+            </td>
+        </tr>
+
+        <tr>
+            <td class="lead">LinkedIn</td>
+            <td>
+                <a
+                    href="https://bd.linkedin.com/in/malam.bff"
+                    target="_blank"
+                    rel="noopener"
+                >
+                    bd.linkedin.com/in/malam.bff ↗️
+                </a>
+            </td>
+        </tr>
+
+        <tr>
+            <td class="lead">Google Scholar</td>
+            <td>
+                <a
+                    href="https://scholar.google.com/citations?view_op=list_works&hl=en&user=0euV3D4AAAAJ"
+                    target="_blank"
+                    rel="noopener"
+                >
+                    Profile ↗️
+                </a>
+            </td>
+        </tr>
+
+        <tr>
+            <td class="lead">Facebook</td>
+            <td>
+                <a
+                    href="https://www.facebook.com/arafatgstu"
+                    target="_blank"
+                    rel="noopener"
+                >
+                    facebook.com/arafatgstu ↗️
+                </a>
+            </td>
+        </tr>
+
+        <tr>
+            <td class="lead">GSTU Profile</td>
+            <td>
+                <a
+                    href="https://www.gstu.ac.bd/fe/student/fifth/Arafat"
+                    target="_blank"
+                    rel="noopener"
+                >
+                    gstu.ac.bd ↗️
+                </a>
+            </td>
+        </tr>
+
+    </table>
+
+</section>
+
+
+
+<!-- ======================================================
+     FOOTER
+====================================================== -->
+
+<footer class="page-footer">
+
+    <span>
+        Md. Arafat Alam — Curriculum Vitae
+    </span>
+
+    <span>
+        Last updated September 2026
+    </span>
+
+</footer>
+
+
+</main>
+
 </div>
 
+
+
+<!-- ======================================================
+     JAVASCRIPT
+====================================================== -->
+
 <script>
-  var toggle = document.getElementById('menuToggle');
-  var sidebar = document.getElementById('sidebar');
-  if(toggle){
-    toggle.addEventListener('click', function(){
-      sidebar.classList.toggle('open');
+
+/* =========================================================
+   MOBILE MENU
+========================================================= */
+
+const menuToggle = document.getElementById("menuToggle");
+const sidebar = document.getElementById("sidebar");
+
+menuToggle.addEventListener("click", function () {
+
+    sidebar.classList.toggle("open");
+
+    if (sidebar.classList.contains("open")) {
+        menuToggle.innerHTML = "✕";
+        menuToggle.setAttribute("aria-label", "Close menu");
+    } else {
+        menuToggle.innerHTML = "☰";
+        menuToggle.setAttribute("aria-label", "Open menu");
+    }
+
+});
+
+
+/* =========================================================
+   CLOSE MOBILE MENU AFTER CLICKING A LINK
+========================================================= */
+
+document.querySelectorAll(".sidenav a").forEach(function(link) {
+
+    link.addEventListener("click", function() {
+
+        if (window.innerWidth <= 900) {
+
+            sidebar.classList.remove("open");
+
+            menuToggle.innerHTML = "☰";
+
+            menuToggle.setAttribute(
+                "aria-label",
+                "Open menu"
+            );
+
+        }
+
     });
-  }
-  var links = document.querySelectorAll('.sidenav a');
-  links.forEach(function(l){
-    l.addEventListener('click', function(){
-      if(window.innerWidth <= 900){ sidebar.classList.remove('open'); }
+
+});
+
+
+/* =========================================================
+   BUTTON CLICK RIPPLE EFFECT
+========================================================= */
+
+document.querySelectorAll(".btn").forEach(function(button) {
+
+    button.addEventListener("click", function(event) {
+
+        const ripple = document.createElement("span");
+
+        ripple.style.position = "absolute";
+        ripple.style.width = "10px";
+        ripple.style.height = "10px";
+        ripple.style.borderRadius = "50%";
+        ripple.style.background = "rgba(255,255,255,.35)";
+        ripple.style.pointerEvents = "none";
+
+        const rect = button.getBoundingClientRect();
+
+        ripple.style.left =
+            (event.clientX - rect.left - 5) + "px";
+
+        ripple.style.top =
+            (event.clientY - rect.top - 5) + "px";
+
+        ripple.style.transform = "scale(1)";
+        ripple.style.opacity = "1";
+
+        ripple.style.transition =
+            "transform .5s ease, opacity .5s ease";
+
+        button.style.position = "relative";
+        button.style.overflow = "hidden";
+
+        button.appendChild(ripple);
+
+        requestAnimationFrame(function() {
+
+            ripple.style.transform = "scale(20)";
+            ripple.style.opacity = "0";
+
+        });
+
+        setTimeout(function() {
+
+            ripple.remove();
+
+        }, 550);
+
     });
-  });
+
+});
+
+
+/* =========================================================
+   SCROLL REVEAL
+========================================================= */
+
+const revealItems = document.querySelectorAll(
+    "section, .entry, .profile-area, .button-row"
+);
+
+const observer = new IntersectionObserver(
+    function(entries) {
+
+        entries.forEach(function(entry) {
+
+            if (entry.isIntersecting) {
+
+                entry.target.classList.add("animate");
+
+                observer.unobserve(entry.target);
+
+            }
+
+        });
+
+    },
+    {
+        threshold: 0.08
+    }
+);
+
+
+revealItems.forEach(function(item) {
+
+    /*
+       Hero elements already have their own animation.
+       This keeps the page smooth while scrolling.
+    */
+
+    if (!item.classList.contains("hero")) {
+        observer.observe(item);
+    }
+
+});
+
+
+/* =========================================================
+   ACTIVE NAVIGATION
+========================================================= */
+
+const sections = document.querySelectorAll("section[id]");
+const navLinks = document.querySelectorAll(".sidenav a");
+
+window.addEventListener("scroll", function() {
+
+    let current = "";
+
+    sections.forEach(function(section) {
+
+        const sectionTop =
+            section.offsetTop - 180;
+
+        if (window.scrollY >= sectionTop) {
+            current = section.getAttribute("id");
+        }
+
+    });
+
+
+    navLinks.forEach(function(link) {
+
+        link.style.color = "";
+
+        if (
+            link.getAttribute("href") === "#" + current
+        ) {
+
+            link.style.color = "var(--blue)";
+
+        }
+
+    });
+
+});
+
+
+/* =========================================================
+   IMAGE FALLBACK
+========================================================= */
+
+const profileImage =
+    document.querySelector(".profile-photo");
+
+if (profileImage) {
+
+    profileImage.addEventListener("error", function() {
+
+        this.style.display = "none";
+
+        const placeholder =
+            document.getElementById("photoPlaceholder");
+
+        if (placeholder) {
+            placeholder.style.display = "flex";
+        }
+
+    });
+
+}
+
 </script>
 
 </body>
